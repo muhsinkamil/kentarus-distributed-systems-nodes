@@ -9,5 +9,4 @@ public class DistributedSystemsNodeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DistributedSystemsNodeApplication.class, args);
 	}
-
 }
