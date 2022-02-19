@@ -3,6 +3,8 @@ package com.kentarusnode.distributed_systems_node.services;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.kentarusnode.distributed_systems_node.services.constants.ResponseConstants;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,12 +17,10 @@ public class WordService {
 
     public String deleteWords() {
         words.clear();
-        return "OK";
+        return ResponseConstants.OK;
     }
 
     public String deleteWord(String delWord) {
-        System.out.println(delWord);
-        System.out.println(words);
         for (String word : words) {
             if (word == delWord) {
                 words.remove(delWord);
@@ -28,7 +28,7 @@ public class WordService {
             }
         }
 
-        return "OK";
+        return ResponseConstants.OK;
     }
 
     public void setWords(ArrayList<String> words) {
