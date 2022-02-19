@@ -1,4 +1,4 @@
-package com.kentarusnode.distributed_systems_node.services.constants;
+package com.kentarusnode.distributed_systems_node.constants;
 
 public class ResponseConstants {
     public static final String OK = "OK";

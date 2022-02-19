@@ -3,7 +3,8 @@ package com.kentarusnode.distributed_systems_node.services;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.kentarusnode.distributed_systems_node.services.constants.ResponseConstants;
+import com.kentarusnode.distributed_systems_node.constants.ConfigConstants;
+import com.kentarusnode.distributed_systems_node.constants.ResponseConstants;
 
 import org.springframework.stereotype.Service;
 
@@ -21,9 +22,9 @@ public class WordService {
     }
 
     public String deleteWord(String delWord) {
-        for (String word : words) {
-            if (word == delWord) {
-                words.remove(delWord);
+        for (int i = 0; i < this.words.size(); i++) {
+            if (this.words.get(i).equals(delWord)) {
+                this.words.remove(i);
                 break;
             }
         }
@@ -31,8 +32,16 @@ public class WordService {
         return ResponseConstants.OK;
     }
 
-    public void setWords(ArrayList<String> words) {
-        this.words = words;
+    public int postWords(ArrayList<String> words, int startIndex) {
+        for (int i = startIndex; i < words.size(); i++) {
+            if (this.words.size() >= ConfigConstants.maxLimit) {
+                // Max limit storage reached. Let the main server try the next node with
+                // startIndex from current one.
+                return i;
+            }
+            this.words.add(words.get(i));
+        }
+        return words.size();
     }
 
 }
