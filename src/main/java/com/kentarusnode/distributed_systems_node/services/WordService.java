@@ -19,9 +19,12 @@ public class WordService {
     }
 
     public String deleteWord(String delWord) {
+        System.out.println(delWord);
+        System.out.println(words);
         for (String word : words) {
             if (word == delWord) {
                 words.remove(delWord);
+                break;
             }
         }
 
