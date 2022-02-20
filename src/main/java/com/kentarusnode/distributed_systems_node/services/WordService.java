@@ -52,6 +52,10 @@ public class WordService {
     }
 
     public int postWords(ArrayList<String> words, int startIndex) {
+        if (nodeService.getStatusOfNode() < 0) {
+            return startIndex;
+        }
+
         for (int i = startIndex; i < words.size(); i++) {
             if (this.words.size() >= ConfigConstants.maxLimit) {
                 // Max limit storage reached. Let the main server try the next node with
