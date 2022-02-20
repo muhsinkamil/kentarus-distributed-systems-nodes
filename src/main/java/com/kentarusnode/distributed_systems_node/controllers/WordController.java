@@ -1,8 +1,7 @@
 package com.kentarusnode.distributed_systems_node.controllers;
 
-import java.util.ArrayList;
-
 import com.kentarusnode.distributed_systems_node.services.WordService;
+import com.kentarusnode.distributed_systems_node.structures.GetWordsResponseStructure;
 import com.kentarusnode.distributed_systems_node.structures.PostWordsRequestStructure;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class WordController {
     WordService wordService;
 
     @GetMapping()
-    public ArrayList<String> getWords() {
+    public GetWordsResponseStructure getWords() {
         return wordService.getWords();
     }
 
