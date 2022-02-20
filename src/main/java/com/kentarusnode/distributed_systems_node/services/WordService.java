@@ -22,14 +22,16 @@ public class WordService {
     }
 
     public String deleteWord(String delWord) {
+        String result = ResponseConstants.NOK;
         for (int i = 0; i < this.words.size(); i++) {
             if (this.words.get(i).equals(delWord)) {
                 this.words.remove(i);
+                result = ResponseConstants.OK;
                 break;
             }
         }
 
-        return ResponseConstants.OK;
+        return result;
     }
 
     public int postWords(ArrayList<String> words, int startIndex) {
