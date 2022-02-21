@@ -1,7 +1,6 @@
 package com.kentarusnode.distributed_systems_node.services;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import com.kentarusnode.distributed_systems_node.constants.ConfigConstants;
 import com.kentarusnode.distributed_systems_node.constants.ResponseConstants;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class WordService {
-    private ArrayList<String> words = new ArrayList<>(Arrays.asList("Please"));
+    private ArrayList<String> words = new ArrayList<>();
 
     @Autowired
     NodeService nodeService;
