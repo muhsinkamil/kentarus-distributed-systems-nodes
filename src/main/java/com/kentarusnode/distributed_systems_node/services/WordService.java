@@ -20,14 +20,14 @@ public class WordService {
 
         if (nodeService.getStatusOfNode() < 0) {
             ArrayList<String> emptyWordArray = new ArrayList<>();
-            return new GetWordsResponseStructure(ResponseConstants.NOK, emptyWordArray);
+            return new GetWordsResponseStructure(ResponseConstants.UNAVAILABLE, emptyWordArray);
         }
         return new GetWordsResponseStructure(ResponseConstants.OK, words);
     }
 
     public String deleteWords() {
         if (nodeService.getStatusOfNode() < 0) {
-            return ResponseConstants.NOK;
+            return ResponseConstants.UNAVAILABLE;
         }
         words.clear();
         return ResponseConstants.OK;
@@ -35,7 +35,7 @@ public class WordService {
 
     public String deleteWord(String delWord) {
         if (nodeService.getStatusOfNode() < 0) {
-            return ResponseConstants.NOK;
+            return ResponseConstants.UNAVAILABLE;
         }
 
         String result = ResponseConstants.NOK;
@@ -52,7 +52,7 @@ public class WordService {
 
     public int postWords(ArrayList<String> words, int startIndex) {
         if (nodeService.getStatusOfNode() < 0) {
-            return startIndex;
+            return -1;
         }
 
         for (int i = startIndex; i < words.size(); i++) {
